@@ -24,10 +24,23 @@ function App() {
     },
   ]);
 
+  const addNewUser = (newUser) => {
+    setUser((prevState)=> ([
+      newUser,
+      ...prevState
+    ]));
+  }
+
+  let content = <h2 style={{color: "white"}}>Nobody's here.</h2>;
+
+  if(users.length > 0) {
+    content = <UsersList items={users}/>;
+  }
+
   return (
     <div className="App">
-      <UserForm />
-      <UsersList items={users}/>
+      <UserForm onAddNewUser={addNewUser} />
+      {content}
     </div>
   );
 }
