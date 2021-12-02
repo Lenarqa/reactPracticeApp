@@ -3,10 +3,10 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import AddUser from "./components/Users/AddUser";
-import UsersList from "./components/UsersList/UsersList";
+import UsersList from "./components/Users/UsersList";
 
 function App() {
-  const [users, setUser] = useState([
+  const [usersList, setUsersList] = useState([
     {
       id: "1",
       name: "Maxim",
@@ -24,22 +24,26 @@ function App() {
     },
   ]);
 
-  const addNewUser = (newUser) => {
-    setUser((prevState)=> ([
-      newUser,
+  const addNewUserHandler = (uName, uAge) => {
+    setUsersList((prevState)=> ([
+      {
+        id: Math.random().toString(),
+        name: uName,
+        age: uAge
+      },
       ...prevState
     ]));
   }
 
   let content = <h2 style={{color: "white"}}>Nobody's here.</h2>;
 
-  if(users.length > 0) {
-    content = <UsersList items={users}/>;
+  if(usersList.length > 0) {
+    content = <UsersList users={usersList}/>;
   }
 
   return (
     <div className="App">
-      <AddUser onAddNewUser={addNewUser} />
+      <AddUser onAddUser={addNewUserHandler} />
       {content}
     </div>
   );

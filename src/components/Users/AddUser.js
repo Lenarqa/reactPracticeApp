@@ -11,23 +11,15 @@ const AddUser = (props) => {
   const [isValid, setValid] = useState(true);
 
   const changeUsernameHandler = (event) => {
-    console.log(event.target.value);
     setEnteredUsername(event.target.value);
   };
 
   const ageChangeHandler = (event) => {
-    console.log(event.target.value);
     setEnteredAge(event.target.value);
   };
 
   const addUserHandler = (event) => {
     event.preventDefault();
-
-    const user = {
-      id: Math.random().toString(),
-      name: enteredUsername,
-      age: enteredAge,
-    };
 
     if (
       enteredUsername.trim().length === 0 ||
@@ -41,7 +33,7 @@ const AddUser = (props) => {
       return;
     }
 
-    props.onAddNewUser(user);
+    props.onAddUser(enteredUsername, enteredAge);
 
     setEnteredUsername("");
     setEnteredAge("");
