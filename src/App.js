@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
-import UserForm from "./components/UserForm/UserForm";
+import AddUser from "./components/Users/AddUser";
 import UsersList from "./components/UsersList/UsersList";
 
 function App() {
@@ -39,7 +39,7 @@ function App() {
 
   return (
     <div className="App">
-      <UserForm onAddNewUser={addNewUser} />
+      <AddUser onAddNewUser={addNewUser} />
       {content}
     </div>
   );
